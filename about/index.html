@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+
+  
+
+  
+    <meta name="author" content="yuluo">
+  
+
+  
+
+  
+
+  <title>About Me | yuluo</title>
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.6/styles/monokai.min.css" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <!-- header -->
+<header class="header">
+  <div class="header-container ">
+    <nav class="header-navbar">
+      <div class="header-navbar-left">
+        <h1 class="header-navbar-logo">
+          <a href="/">
+            
+              <img src="https://qiniu.miiiku.xyz/src/images/logo.png" alt="yuluo">
+            
+          </a>
+        </h1>
+      </div>
+      <div class="header-navbar-right">
+        <div class="header-navbar-btn">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="header-navbar-list">
+          
+            <li class="header-navbar-item"><a href="/">首页</a></li>
+          
+            <li class="header-navbar-item"><a href="/categories">分类</a></li>
+          
+            <li class="header-navbar-item"><a href="/tags">标签</a></li>
+          
+            <li class="header-navbar-item"><a href="/about">关于</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <section id="main"><!-- 页面详情页 -->
+
+<!-- banner container -->
+<div class="banner-container" style="background-image: url(https://qiniu.miiiku.xyz/src/images/banner.jpg)">
+  <div class="banner-inner">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+      <h1 class="header-title"><a href="/about/index.html">About Me</a></h1>
+      
+    
+  </div>
+</div>
+
+<!-- 自定义页面 -->
+
+<div class="body-container">
+  
+  
+  <article class="main-container article-content">
+    <div class="article-entry">
+<div class="moe-mashiro" style="text-align:center; font-size: 50px; margin-bottom: 20px;">[詩と遠方]</div>
+<div id="hello-mashiro" class="popcontainer" style="min-height: 300px; padding: 2px 6px 4px; background-color: rgba(242, 242, 242, 0.5); border-radius: 10px;">
+  <center>
+  <p>
+  </p>
+  <h4>
+  与&nbsp;<ruby>
+  Houtarou&nbsp;<rp>
+  （</rp>
+  <rt>
+  千ちゃん</rt>
+  <rp>
+  ）</rp>
+  </ruby>
+  对话中...</h4>
+  <p>
+  </p>
+  </center>
+  <bot-ui>
+</bot-ui></div>
+<script src="https://cdn.jsdelivr.net/vue/latest/vue.min.js"></script>
+<script src="https://unpkg.com/botui/build/botui.min.js"></script>
+<script>
+function bot_ui_ini() {
+    var botui = new BotUI("hello-mashiro");
+    botui.message.add({
+        delay: 800,
+        content: "Welcome to my blog"
+    }).then(function () {
+        botui.message.add({
+            delay: 1100,
+            content: "这里是 Houtarou"
+        }).then(function () {
+            botui.message.add({
+                delay: 1100,
+                content: "Me 是蓝星上的一条咸鱼~"
+            }).then(function () {
+                botui.action.button({
+                    delay: 1600,
+                    action: [{
+                        text: "so？ 😃",
+                        value: "sure"
+                    }, {
+                        text: "少废话！ 🙄",
+                        value: "skip"
+                    }]
+                }).then(function (a) {
+                    "sure" == a.value && sure();
+                    "skip" == a.value && end()
+                })
+            })
+        })
+    });
+    var sure = function () {
+            botui.message.add({
+                delay: 600,
+                content: "😘"
+            }).then(function () {
+                secondpart()
+            })
+        },
+        end = function () {
+            botui.message.add({
+                delay: 600,
+                content: "![...](https://view.moezx.cc/images/2018/05/06/a1c4cd0452528b572af37952489372b6.md.jpg)"
+            })
+        },
+        secondpart = function () {
+            botui.message.add({
+                delay: 1500,
+                content: "目前就处于咸鱼状态"
+            }).then(function () {
+                botui.message.add({
+                    delay: 1500,
+                    content: "本人专业是计算机控制专业，学的知其然，不知其所以然"
+                }).then(function () {
+                    botui.message.add({
+                        delay: 1200,
+                        content: "因为在学校只是为了应付考试嘛！"
+                    }).then(function () {
+                        botui.message.add({
+                            delay: 1500,
+                            content: "兴趣爱好是动漫和看看书，喜欢在静谧的夜晚仰望夜晚的星空"
+                        }).then(function () {
+                            botui.message.add({
+                                delay: 1500,
+                                content: "em ... 现在只想把linux学好，可以的话脚本、网络也来一点就好了"
+                            }).then(function () {
+                                botui.message.add({
+                                    delay: 1800,
+                                    content: "希望做的事感觉也是挺多，目前想想就好"
+                                }).then(function () {
+                                    botui.action.button({
+                                        delay: 1100,
+                                        action: [{
+                                            text: "为什么这里叫Houtarou呢？ 🤔",
+                                            value: "why-Houtarou"
+                                        }]
+                                    }).then(function (a) {
+                                        thirdpart()
+                                    })
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        },
+        thirdpart = function () {
+            botui.message.add({
+                delay: 1E3,
+                content: "Houtarou来自一部动画，因为喜欢主角的性格~可能觉得跟我有点像吧！ "
+            }).then(function () {
+                botui.action.button({
+                    delay: 1500,
+                    action: [{
+                        text: "为什么有 詩と遠方 呢？ 🤔",
+                        value: "why-Poetry and Distance"
+                    }]
+                }).then(function (a) {
+                    fourthpart()
+                })
+            })
+        },
+        fourthpart = function () {
+            botui.message.add({
+                delay: 1E3,
+                content: "可能觉得名字好听还有点意义吧！ "
+            }).then(function () {
+                botui.message.add({
+                    delay: 1100,
+                    content: "而且跟域名有一定的关系！"
+                }).then(function () {
+                    botui.action.button({
+                        delay: 1500,
+                        action: [{
+                            text: "域名有什么含意吗？(ง •_•)ง",
+                            value: "why-domain"
+                        }]
+                    }).then(function (a) {
+                        fifthpart()
+                    })
+                })
+            })
+        },
+        fifthpart = function () {
+            botui.message.add({
+                delay: 1E3,
+                content: "emmmm，看上面嘛！=.= 就是跟 詩と遠方 有关系嘛！。"
+            }).then(function () {
+                botui.message.add({
+                    delay: 1600,
+                    content: "好了，接下来，看看我的博客吧？ ^_^"
+                })
+            })
+        } 
+}
+bot_ui_ini()
+</script>
+</div>
+  </article>
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+</div>
+</section>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    <p> <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.9/img/gif/kaowaiyi.gif" width="100" height="80"></p>
+
+<!--    
+      <p id="hitokoto"></p>
+      <script src="https://v1.hitokoto.cn/?c=a&amp;encode=js&select=%23hitokoto" defer></script>
+    
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank">flex-block</a></p> -->
+    
+
+<div style="text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("07/1/2019 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " 宇宙将于第 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + "秒 毁灭";
+    }
+  setInterval("createtime()",250);
+</script>
+
+<div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        
+        
+        </p><p>始于2019年7月1日
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</div></footer>
+
+  </div>
+
+  
+
+  
+  <!-- 尾部其他内容 -->
+
+<!-- analytics -->
+
+
+
+
+
+
+
+  
+  
+
+<!-- dplayer 视频 -->
+<link rel="stylesheet" href="/lib/DPlayer.min.css">
+<script src="/lib/DPlayer.min.js"></script>
+<script type="text/javascript">
+  const dplayer = document.querySelectorAll(".dplayer");
+  dplayer && initDPlayer(dplayer);
+  function initDPlayer(els) {
+    let elsArr = Array.from(els);
+    elsArr.forEach(el => {
+      let url = el.dataset.url;
+      let cover = el.dataset.cover;
+      new DPlayer({
+        container: el,
+        video: { url: url, pic: cover },
+        theme: "#b7daff",
+        autoplay: false,
+        loop: false,
+        mutex: true,
+      });
+    });
+  }
+</script>
+
+
+<!-- 瀑布流 -->
+<script src="/lib/macy.js"></script>
+<script type="text/javascript">
+
+if (document.querySelector(".waterfall-container")) {
+  initCss()
+  initMacy(".waterfall-container")
+}
+
+function initMacy(selector) {
+  new Macy({
+    container: selector,
+    trueOrder: false,
+    waitForImages: false,
+    useOwnImageLoader: false,
+    mobileFirst: true,
+    columns: 1,
+    margin: {
+      y: 16,
+      x: '2%',
+    },
+    breakAt: {
+      1200: {
+        margin: {
+          x: 20
+        },
+        columns: 4
+      },
+      940: {
+        margin: {
+          x: 20
+        },
+        columns: 3
+      },
+      520: {
+        margin: {
+          x: 10
+        },
+        columns: 2
+      },
+      400: {
+        margin: {
+          x: 0
+        },
+        columns: 1
+      },
+    }
+  });
+}
+
+function initCss() {
+  let cssStyle = document.createElement("style")
+  cssStyle.innerText = `.waterfall-container p { display: block; border-radius: 4px; overflow: hidden; margin: 0; }`
+  document.head.appendChild(cssStyle);
+}
+</script>
+
+
+<!-- 图片预览 -->
+<script src="/lib/zoom.min.js"></script>
+<script>
+  document.querySelector(".zoom") && zoom(".zoom", {
+    margin: 15,
+    padding: 15,
+    radius: 5,
+    specify: "",
+    filter: "gallery",
+  });
+</script>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

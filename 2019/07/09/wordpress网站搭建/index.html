@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+
+  
+
+  
+    <meta name="author" content="yuluo">
+  
+
+  
+
+  
+
+  <title>wordpress网站搭建 | yuluo</title>
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.6/styles/monokai.min.css" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <!-- header -->
+<header class="header">
+  <div class="header-container ">
+    <nav class="header-navbar">
+      <div class="header-navbar-left">
+        <h1 class="header-navbar-logo">
+          <a href="/">
+            
+              <img src="https://qiniu.miiiku.xyz/src/images/logo.png" alt="yuluo">
+            
+          </a>
+        </h1>
+      </div>
+      <div class="header-navbar-right">
+        <div class="header-navbar-btn">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="header-navbar-list">
+          
+            <li class="header-navbar-item"><a href="/">首页</a></li>
+          
+            <li class="header-navbar-item"><a href="/categories">分类</a></li>
+          
+            <li class="header-navbar-item"><a href="/tags">标签</a></li>
+          
+            <li class="header-navbar-item"><a href="/about">关于</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <section id="main"><!-- 文章详情页 -->
+
+<!-- banner container -->
+<div class="banner-container" style="background-image: url(https://qiniu.miiiku.xyz/src/images/banner.jpg)">
+  <div class="banner-inner">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+      <h1 class="header-title"><a href="/2019/07/09/wordpress网站搭建/">wordpress网站搭建</a></h1>
+      <h2 class="header-subtitle">
+        
+          <a class="article-category-link" href="/categories/技术/">技术</a>
+          <!--
+          
+  <a href="javascript:;" class="article-date">
+    <time datetime="2019-07-09T04:04:57.000Z" itemprop="datePublished">2019-07-09 12:04:57</time>
+  </a>
+
+          -->
+        
+      </h2>
+    
+
+    
+    
+  </div>
+</div>
+
+<!-- 文章内容 -->
+
+<div class="body-container">
+  <article id="article-content" class="main-container article-content zoom">
+    
+    
+    <div class="article-gallery">
+      
+<div class="article-gallery-photos">
+  
+    <a class="article-gallery-photos-img" href="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.5/img/banner/wallhaven11.png" target="_blank" rel="gallery-cjybt3qv20009hktpwovm7364">
+      <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.5/img/banner/wallhaven11.png" gallery itemprop="image">
+    </a>
+  
+</div>
+    </div>
+    
+
+    <div class="article-entry">
+      <h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><p>1、服务器环境cent6.9<br>2、下载wordpress安装包<br>3、FileZilla_3.42.1_win64-setup.exe  #用于本地上传文件到服务器<br>4、SecureCRT or putty #用于命令的配置</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install httpd php mysal-server php-mysql -y  <span class="hljs-comment">#安装Apache, PHP, MySQL以及php连接mysql组件                           </span><br>yum install mysql-server  <span class="hljs-comment">#yum安装数据库服务器</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/init.d/httpd start   <span class="hljs-comment">#启动Apache</span><br>/etc/init.d/mysqld start  <span class="hljs-comment">#启动数据库</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql<br>mysql&gt; grant all on 用户名.* to <span class="hljs-string">'用户名'</span>@<span class="hljs-string">'localhost'</span> identified by <span class="hljs-string">'密码'</span>;   <span class="hljs-comment">#设置数据库密码</span><br>mysql&gt; create database 数据库账户名;   <span class="hljs-comment">#创建数据库名字</span><br>mysql&gt; flush privileges;   <span class="hljs-comment">#刷新权限</span><br>mysql&gt; <span class="hljs-built_in">exit</span>  <span class="hljs-comment">#退出</span><br>mysql -u用户名 -p密码   <span class="hljs-comment">#用此命令登录数据库，看数据库账号密码是否正确</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="wordpress配置"><a href="#wordpress配置" class="headerlink" title="wordpress配置"></a>wordpress配置</h3><p>1、wordpress安装包处理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar xf wordpress-4.9.4-zh_CN.tar.gz <span class="hljs-comment">#在wordpress网站下载wordpress安装包上传到服务器的/tmp目录解压缩</span><br>mv wordpress /var/www/html/   <span class="hljs-comment">#将tmp目录下解压的wordpress移动到/var/www/html/路径下</span><br></code></pre></td></tr></table></figure>
+
+<p>2、wordpress文件处理</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">cp wp-config-sample.php wp-config.php <span class="hljs-comment">#在/var/www/html/wordpress/目录下，将wp-config-sample.php名字改为wp-config.php</span><br>vi wp-config.php <span class="hljs-comment">#配置wp-config.php文件内数据库的用户密码，和创建数据库设置的用户密码一致</span><br>...<br>/** MySQL数据库用户名 */<br>define(<span class="hljs-string">'DB_USER'</span>, <span class="hljs-string">'username_here'</span>);<br><br>/** MySQL数据库密码 */<br>define(<span class="hljs-string">'DB_PASSWORD'</span>, <span class="hljs-string">'password_here'</span>);<br>define(<span class="hljs-string">'DB_NAME'</span>, <span class="hljs-string">'数据库账户名'</span>);<br>define(<span class="hljs-string">'DB_USER'</span>, <span class="hljs-string">'数据库用户名'</span>);<br>define(<span class="hljs-string">'DB_PASSWORD'</span>, <span class="hljs-string">'数据库密码'</span>);<br>...<br></code></pre></td></tr></table></figure>
+
+<p>3、直接用在网页输入 http://服务器IP地址/wordpress/ 进入打开网页，开始进行wordpress页面的设置，需要图片或者多个博客的，<br>可以参考：<a href="https://blog.51cto.com/13858192/2169046" target="_blank" rel="noopener">https://blog.51cto.com/13858192/2169046</a><br>需要Apache, PHP, MySQL命令解释的可以参考：<br>3.1、<a href="https://www.cnblogs.com/qq917937712/p/8004555.html" target="_blank" rel="noopener">https://www.cnblogs.com/qq917937712/p/8004555.html</a><br>3.2、<a href="https://www.cnblogs.com/zfying/archive/2012/06/25/2560765.html" target="_blank" rel="noopener">https://www.cnblogs.com/zfying/archive/2012/06/25/2560765.html</a><br>3.3、<a href="https://www.jb51.net/article/95774.htm" target="_blank" rel="noopener">https://www.jb51.net/article/95774.htm</a></p>
+<h3 id="Apache和PHP的关系"><a href="#Apache和PHP的关系" class="headerlink" title="Apache和PHP的关系"></a>Apache和PHP的关系</h3><p>Apache只是一个服务程序，类似于ASP的IIS，它的功能是能获取用户的访问请求，并进行答复。<br>PHP是解释器的作用。<br>工作原理是，用户访问服务器，服务器上的APCHAE获得请求，然后根据用户访问的内容，寻找到网页文件，如果网页文件是需要编译的文件，比如PHP，就调用PHP的编译器（就是我们安装的PHP），编译解释完成之后就生成HTML的文件，APCHAE再将这个HTML文件返回给用户。</p>
+
+    </div>
+
+    <div class="article-footer">
+      
+    </div>
+
+    <div class="article-navs">
+      
+<nav class="card-container card-article-nav">
+  <div class="card-wrap">
+    
+      <div class="card-item">
+        <article>
+          
+          <a class="card-link article-nav-link" href="/2019/07/19/hello-world/"></a>
+          <div class="article-nav-caption">Newer</div>
+          <div class="article-nav-title">Hello World</div>
+        </article>
+      </div>
+    
+    
+      <div class="card-item">
+        <article>
+          
+          <a class="card-link article-nav-link" href="/2019/07/08/hexo新建分类和标签/"></a>
+          <div class="article-nav-caption">Older</div>
+          <div class="article-nav-title">hexo新建分类和标签</div>
+        </article>
+      </div>
+    
+  </div>
+</nav>
+
+    </div>
+    
+    
+  </article>
+</div></section>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    <p> <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.9/img/gif/kaowaiyi.gif" width="100" height="80"></p>
+
+<!--    
+      <p id="hitokoto"></p>
+      <script src="https://v1.hitokoto.cn/?c=a&amp;encode=js&select=%23hitokoto" defer></script>
+    
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank">flex-block</a></p> -->
+    
+
+<div style="text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("07/1/2019 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " 宇宙将于第 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + "秒 毁灭";
+    }
+  setInterval("createtime()",250);
+</script>
+
+<div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        
+        
+        </p><p>始于2019年7月1日
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</div></footer>
+
+  </div>
+
+  
+
+  
+  <!-- 尾部其他内容 -->
+
+<!-- analytics -->
+
+
+
+
+
+
+
+  
+  
+
+<!-- dplayer 视频 -->
+<link rel="stylesheet" href="/lib/DPlayer.min.css">
+<script src="/lib/DPlayer.min.js"></script>
+<script type="text/javascript">
+  const dplayer = document.querySelectorAll(".dplayer");
+  dplayer && initDPlayer(dplayer);
+  function initDPlayer(els) {
+    let elsArr = Array.from(els);
+    elsArr.forEach(el => {
+      let url = el.dataset.url;
+      let cover = el.dataset.cover;
+      new DPlayer({
+        container: el,
+        video: { url: url, pic: cover },
+        theme: "#b7daff",
+        autoplay: false,
+        loop: false,
+        mutex: true,
+      });
+    });
+  }
+</script>
+
+
+<!-- 瀑布流 -->
+<script src="/lib/macy.js"></script>
+<script type="text/javascript">
+
+if (document.querySelector(".waterfall-container")) {
+  initCss()
+  initMacy(".waterfall-container")
+}
+
+function initMacy(selector) {
+  new Macy({
+    container: selector,
+    trueOrder: false,
+    waitForImages: false,
+    useOwnImageLoader: false,
+    mobileFirst: true,
+    columns: 1,
+    margin: {
+      y: 16,
+      x: '2%',
+    },
+    breakAt: {
+      1200: {
+        margin: {
+          x: 20
+        },
+        columns: 4
+      },
+      940: {
+        margin: {
+          x: 20
+        },
+        columns: 3
+      },
+      520: {
+        margin: {
+          x: 10
+        },
+        columns: 2
+      },
+      400: {
+        margin: {
+          x: 0
+        },
+        columns: 1
+      },
+    }
+  });
+}
+
+function initCss() {
+  let cssStyle = document.createElement("style")
+  cssStyle.innerText = `.waterfall-container p { display: block; border-radius: 4px; overflow: hidden; margin: 0; }`
+  document.head.appendChild(cssStyle);
+}
+</script>
+
+
+<!-- 图片预览 -->
+<script src="/lib/zoom.min.js"></script>
+<script>
+  document.querySelector(".zoom") && zoom(".zoom", {
+    margin: 15,
+    padding: 15,
+    radius: 5,
+    specify: "",
+    filter: "gallery",
+  });
+</script>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

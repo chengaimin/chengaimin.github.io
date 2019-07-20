@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+
+  
+
+  
+    <meta name="author" content="yuluo">
+  
+
+  
+
+  
+
+  <title>wordpress加入看板娘live2D | yuluo</title>
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.6/styles/monokai.min.css" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <!-- header -->
+<header class="header">
+  <div class="header-container ">
+    <nav class="header-navbar">
+      <div class="header-navbar-left">
+        <h1 class="header-navbar-logo">
+          <a href="/">
+            
+              <img src="https://qiniu.miiiku.xyz/src/images/logo.png" alt="yuluo">
+            
+          </a>
+        </h1>
+      </div>
+      <div class="header-navbar-right">
+        <div class="header-navbar-btn">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="header-navbar-list">
+          
+            <li class="header-navbar-item"><a href="/">首页</a></li>
+          
+            <li class="header-navbar-item"><a href="/categories">分类</a></li>
+          
+            <li class="header-navbar-item"><a href="/tags">标签</a></li>
+          
+            <li class="header-navbar-item"><a href="/about">关于</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <section id="main"><!-- 文章详情页 -->
+
+<!-- banner container -->
+<div class="banner-container" style="background-image: url(https://qiniu.miiiku.xyz/src/images/banner.jpg)">
+  <div class="banner-inner">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+      <h1 class="header-title"><a href="/2019/07/03/wordpress-live2d/">wordpress加入看板娘live2D</a></h1>
+      <h2 class="header-subtitle">
+        
+          <a class="article-category-link" href="/categories/技术/">技术</a>
+          <!--
+          
+  <a href="javascript:;" class="article-date">
+    <time datetime="2019-07-03T14:16:01.000Z" itemprop="datePublished">2019-07-03 10:16:01</time>
+  </a>
+
+          -->
+        
+      </h2>
+    
+
+    
+    
+  </div>
+</div>
+
+<!-- 文章内容 -->
+
+<div class="body-container">
+  <article id="article-content" class="main-container article-content zoom">
+    
+    
+    <div class="article-gallery">
+      
+<div class="article-gallery-photos">
+  
+    <a class="article-gallery-photos-img" href="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.4/img/banner/wallhaven2.png" target="_blank" rel="gallery-cjybt3qv00008hktpagx2cdzk">
+      <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.4/img/banner/wallhaven2.png" gallery itemprop="image">
+    </a>
+  
+</div>
+    </div>
+    
+
+    <div class="article-entry">
+      <h3 id="下载及存放"><a href="#下载及存放" class="headerlink" title="下载及存放"></a>下载及存放</h3><p>1、将看板娘安装包live2d.zip下载到wordpress内。</p>
+<h3 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#解压live2d.zip包后得到三个文件：assets、demo.html、live2d，将3文件放进以下路经中。</span><br>$ /wordpress/wp-content/themes/主题目录/<br></code></pre></td></tr></table></figure>
+
+<h3 id="修改waifu-tips-js"><a href="#修改waifu-tips-js" class="headerlink" title="修改waifu-tips.js"></a>修改waifu-tips.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">      loadlive2d(<span class="hljs-string">'live2d'</span>, <span class="hljs-string">'./live2d/get/?id='</span>+modelId+<span class="hljs-string">'-'</span>+modelTextur<br>esId, console.log(<span class="hljs-string">'live2d'</span>,<span class="hljs-string">'模型 '</span>+modelId+<span class="hljs-string">'-'</span>+modelTexturesId+<span class="hljs-string">' 加&gt;<br>载完成'</span>));<br>      url: <span class="hljs-string">'./live2d/'</span>+modelTexturesRandMode+<span class="hljs-string">'_textures/?id='</span>+mode<br>lId+<span class="hljs-string">'-'</span>+modelTexturesId,<br>      url: <span class="hljs-string">'./live2d/'</span>+modelTexturesRandMode+<span class="hljs-string">'/?id='</span>+modelId,<br><span class="hljs-comment">#修改主题目录内文件waifu-tips.js，把./live2d路径改成绝对路径，如：/wp-content/themes/主题目录/assets/live2d</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="修改demo-html"><a href="#修改demo-html" class="headerlink" title="修改demo.html"></a>修改demo.html</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./assets/jquery.min.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./assets/waifu-tips.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./assets/live2d.js"</span>&gt;&lt;/script&gt;<br><span class="hljs-comment">#修改主题目录内文件demo.html，把./assets路径改成绝对路径，如：/wp-content/themes/主题目录/assets</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="footer-php插入代码"><a href="#footer-php插入代码" class="headerlink" title="footer.php插入代码"></a>footer.php插入代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将主题目录下文件demo.html部分代码复制到主题目录下的footer.php文件底部&lt;/body&gt;内。</span><br>vim footer.php  <br>&lt;div class=<span class="hljs-string">"waifu"</span>&gt;<br>&lt;div class=<span class="hljs-string">"waifu-tips"</span>&gt;&lt;/div&gt;<br>&lt;canvas id=<span class="hljs-string">"live2d"</span> width=<span class="hljs-string">"280"</span> height=<span class="hljs-string">"250"</span> class=<span class="hljs-string">"live2d"</span>&gt;&lt;/canvas&gt;<br>&lt;div class=<span class="hljs-string">"waifu-tool"</span>&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-home"</span>&gt;&lt;/span&gt;  //!是注释 不启用该行代码<br>    &lt;span class=<span class="hljs-string">"fui-chat"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-eye"</span>&gt;&lt;/span&gt;<br>    &lt;span class=<span class="hljs-string">"fui-user"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-photo"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-info-circle"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-cross"</span>&gt;&lt;/span&gt;<br>  &lt;/div&gt;<br>&lt;/div&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/waifu-tips.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/live2d.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/jquery.min.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;initModel(<span class="hljs-string">"/wp-content/themes/主题目录/assets/"</span>)&lt;/script&gt;<br>&#123;1&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="header-php插入代码"><a href="#header-php插入代码" class="headerlink" title="header.php插入代码"></a>header.php插入代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将主题目录下文件demo.html部分代码复制到主题目录下的header.php文件开头的&lt;head&gt;内。</span><br>vim header.php<br>&lt;head&gt;<br>    &lt;meta http-equiv=<span class="hljs-string">"Content-Type"</span> content=<span class="hljs-string">"text/html; charset=UTF-8"</span> /&gt;  <br>    &lt;link rel=<span class="hljs-string">"stylesheet"</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/css"</span> href=<span class="hljs-string">"/wp-content/themes/主题目录/assets/waifu.css"</span>&gt;<br>    &lt;script src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/jquery.min.js"</span>&gt;&lt;/script&gt;<br>&lt;/head&gt;<br></code></pre></td></tr></table></figure>
+
+
+    </div>
+
+    <div class="article-footer">
+      <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">#web</a></li></ul>
+    </div>
+
+    <div class="article-navs">
+      
+<nav class="card-container card-article-nav">
+  <div class="card-wrap">
+    
+      <div class="card-item">
+        <article>
+          
+          <a class="card-link article-nav-link" href="/2019/07/06/安装hexo主题/"></a>
+          <div class="article-nav-caption">Newer</div>
+          <div class="article-nav-title">安装hexo主题</div>
+        </article>
+      </div>
+    
+    
+  </div>
+</nav>
+
+    </div>
+    
+    
+  <div id="comment-container" class="comment-container"></div>
+
+  </article>
+</div></section>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    <p> <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.9/img/gif/kaowaiyi.gif" width="100" height="80"></p>
+
+<!--    
+      <p id="hitokoto"></p>
+      <script src="https://v1.hitokoto.cn/?c=a&amp;encode=js&select=%23hitokoto" defer></script>
+    
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank">flex-block</a></p> -->
+    
+
+<div style="text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("07/1/2019 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " 宇宙将于第 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + "秒 毁灭";
+    }
+  setInterval("createtime()",250);
+</script>
+
+<div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        
+        
+        </p><p>始于2019年7月1日
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</div></footer>
+
+  </div>
+
+  
+
+  
+  <!-- 尾部其他内容 -->
+
+<!-- analytics -->
+
+
+
+
+
+
+
+  
+  
+
+<!-- dplayer 视频 -->
+<link rel="stylesheet" href="/lib/DPlayer.min.css">
+<script src="/lib/DPlayer.min.js"></script>
+<script type="text/javascript">
+  const dplayer = document.querySelectorAll(".dplayer");
+  dplayer && initDPlayer(dplayer);
+  function initDPlayer(els) {
+    let elsArr = Array.from(els);
+    elsArr.forEach(el => {
+      let url = el.dataset.url;
+      let cover = el.dataset.cover;
+      new DPlayer({
+        container: el,
+        video: { url: url, pic: cover },
+        theme: "#b7daff",
+        autoplay: false,
+        loop: false,
+        mutex: true,
+      });
+    });
+  }
+</script>
+
+
+<!-- 瀑布流 -->
+<script src="/lib/macy.js"></script>
+<script type="text/javascript">
+
+if (document.querySelector(".waterfall-container")) {
+  initCss()
+  initMacy(".waterfall-container")
+}
+
+function initMacy(selector) {
+  new Macy({
+    container: selector,
+    trueOrder: false,
+    waitForImages: false,
+    useOwnImageLoader: false,
+    mobileFirst: true,
+    columns: 1,
+    margin: {
+      y: 16,
+      x: '2%',
+    },
+    breakAt: {
+      1200: {
+        margin: {
+          x: 20
+        },
+        columns: 4
+      },
+      940: {
+        margin: {
+          x: 20
+        },
+        columns: 3
+      },
+      520: {
+        margin: {
+          x: 10
+        },
+        columns: 2
+      },
+      400: {
+        margin: {
+          x: 0
+        },
+        columns: 1
+      },
+    }
+  });
+}
+
+function initCss() {
+  let cssStyle = document.createElement("style")
+  cssStyle.innerText = `.waterfall-container p { display: block; border-radius: 4px; overflow: hidden; margin: 0; }`
+  document.head.appendChild(cssStyle);
+}
+</script>
+
+
+<!-- 图片预览 -->
+<script src="/lib/zoom.min.js"></script>
+<script>
+  document.querySelector(".zoom") && zoom(".zoom", {
+    margin: 15,
+    padding: 15,
+    radius: 5,
+    specify: "",
+    filter: "gallery",
+  });
+</script>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

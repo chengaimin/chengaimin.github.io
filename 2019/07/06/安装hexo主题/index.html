@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+
+  
+
+  
+    <meta name="author" content="yuluo">
+  
+
+  
+
+  
+
+  <title>安装hexo主题 | yuluo</title>
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.6/styles/monokai.min.css" rel="stylesheet">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div id="container">
+    <!-- header -->
+<header class="header">
+  <div class="header-container ">
+    <nav class="header-navbar">
+      <div class="header-navbar-left">
+        <h1 class="header-navbar-logo">
+          <a href="/">
+            
+              <img src="https://qiniu.miiiku.xyz/src/images/logo.png" alt="yuluo">
+            
+          </a>
+        </h1>
+      </div>
+      <div class="header-navbar-right">
+        <div class="header-navbar-btn">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul class="header-navbar-list">
+          
+            <li class="header-navbar-item"><a href="/">首页</a></li>
+          
+            <li class="header-navbar-item"><a href="/categories">分类</a></li>
+          
+            <li class="header-navbar-item"><a href="/tags">标签</a></li>
+          
+            <li class="header-navbar-item"><a href="/about">关于</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+    <section id="main"><!-- 文章详情页 -->
+
+<!-- banner container -->
+<div class="banner-container" style="background-image: url(https://qiniu.miiiku.xyz/src/images/banner.jpg)">
+  <div class="banner-inner">
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+      <h1 class="header-title"><a href="/2019/07/06/安装hexo主题/">安装hexo主题</a></h1>
+      <h2 class="header-subtitle">
+        
+          <a class="article-category-link" href="/categories/技术/">技术</a>
+          <!--
+          
+  <a href="javascript:;" class="article-date">
+    <time datetime="2019-07-06T05:16:21.000Z" itemprop="datePublished">2019-07-06 01:16:21</time>
+  </a>
+
+          -->
+        
+      </h2>
+    
+
+    
+    
+  </div>
+</div>
+
+<!-- 文章内容 -->
+
+<div class="body-container">
+  <article id="article-content" class="main-container article-content zoom">
+    
+    
+    <div class="article-gallery">
+      
+<div class="article-gallery-photos">
+  
+    <a class="article-gallery-photos-img" href="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.4/img/banner/wallhaven2.png" target="_blank" rel="gallery-cjybt3qv8000chktp6e71ypec">
+      <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.4/img/banner/wallhaven2.png" gallery itemprop="image">
+    </a>
+  
+</div>
+    </div>
+    
+
+    <div class="article-entry">
+      <h3 id="第一部分：github准备"><a href="#第一部分：github准备" class="headerlink" title="第一部分：github准备"></a>第一部分：github准备</h3><p>1、注册github账号,网址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<p>2、创建仓库，仓库名字“XXXX.github.io”</p>
+<p>3、找到_config.yml文件，repo值添加（在末尾） <a href="https://github.com/chengaimi/chengaimi.github.io.git" target="_blank" rel="noopener">https://github.com/chengaimi/chengaimi.github.io.git</a></p>
+<h3 id="第二部分：安装hexo工具"><a href="#第二部分：安装hexo工具" class="headerlink" title="第二部分：安装hexo工具"></a>第二部分：安装hexo工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo -g <span class="hljs-comment">#安装hexo</span><br>$ hexo -v   <span class="hljs-comment">#检查版本看安装是否成功</span><br>$ hexo init  <span class="hljs-comment">#初始化该文件夹</span><br>$ npm install  <span class="hljs-comment">#安装所需要的组件</span><br>$ hexo generate  <span class="hljs-comment">#首次体验Hexo</span><br>$ hexo server <span class="hljs-comment">#开启服务器，访问该网址，正式体验Hexo(hexo server -p 端口号”:可更改端口号)</span><br><span class="hljs-comment">#浏览器输入 http://localhost:4000 看下效果吧！</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="第三部分：初始化帐号密码"><a href="#第三部分：初始化帐号密码" class="headerlink" title="第三部分：初始化帐号密码"></a>第三部分：初始化帐号密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#在本地新建一个博客目录文件夹，初始化自己的git帐号和密码设置Git的user name和email（如果是第一次的话）</span><br>$ <span class="hljs-built_in">cd</span> /d/hexo    <span class="hljs-comment">#进入到所建博客目录文件下</span><br>$ npm install hexo-deployer-git --save <span class="hljs-comment">#部署项目，需要安装一个Hexo插件，具体原因未做了解</span><br>$ git config --global user.name <span class="hljs-string">"chengaimi"</span>  <span class="hljs-comment">#创建用户名</span><br>$ git config --global user.email <span class="hljs-string">"530324300@qq.com"</span>   <span class="hljs-comment">#配置邮箱 </span><br>$ ssh-keygen -t rsa -C <span class="hljs-string">"530324300@qq.com"</span>  <span class="hljs-comment">#续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub  //默认存储路径是：C:\Users\Administrator\.ssh</span><br>Generating public/private rsa key pair.<br>Enter file <span class="hljs-keyword">in</span> <span class="hljs-built_in">which</span> to save the key (/c/Users/Administrator/.ssh/id_rsa):<br>Created directory <span class="hljs-string">'/c/Users/Administrator/.ssh'</span>.<br>Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved <span class="hljs-keyword">in</span> /c/Users/Administrator/.ssh/id_rsa.<br>Your public key has been saved <span class="hljs-keyword">in</span> /c/Users/Administrator/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>SHA256:AGkeLzdiYwaqeKU2Q3KelPvy6miu18/p4/dGutXjSaM 530324300@qq.com<br>The key<span class="hljs-string">'s randomart image is:<br>+---[RSA 3072]----+<br>|    ..           |<br>|  . +.           |<br>| . = o.          |<br>|o = X +.         |<br>|o* O = .S        |<br>|o X       ..     |<br>| o =     o. =    |<br>| oo o...o..+ +   |<br>|*+o+.+*o.+E o    |<br>+----[SHA256]-----+</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="第四部分：添加密匙"><a href="#第四部分：添加密匙" class="headerlink" title="第四部分：添加密匙"></a>第四部分：添加密匙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#进到Users/Administrator/.ssh路径下</span><br>$ <span class="hljs-built_in">eval</span> <span class="hljs-string">"<span class="hljs-variable">$(ssh-agent -s)</span>"</span>   <span class="hljs-comment">#添加密钥到ssh-agent</span><br>$ ssh-add ~/.ssh/id_rsa  <span class="hljs-comment">#添加生成的SSH key到ssh-agent</span><br><span class="hljs-comment"># 登录Github，点击头像下的settings，添加ssh，新建一个new ssh key，将id_rsa.pub文件里的内容复制上去</span><br>$ ssh -T git@github.com <span class="hljs-comment">#测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了</span><br>The authenticity of host <span class="hljs-string">'github.com (51.74.224.119)'</span> can<span class="hljs-string">'t be established.<br>RSA key fingerprint is SHA256:nThbg6kXUcJWGlfE1IGOCxpRomTxdCARLviKw6E5SY8.<br>Are you sure you want to continue connecting (yes/no/[fingerprint])? yes（生成known hosts文件）<br>Warning: Permanently added '</span>github.com,51.74.224.119<span class="hljs-string">' (RSA) to the list of known hosts.<br>Hi chengaimi! You'</span>ve successfully authenticated, but GitHub does not provide shell access.<br>$ hexo clean <span class="hljs-comment">#清理项目</span><br>$ hexo g <span class="hljs-comment">#生成项目 </span><br>$ hexo d <span class="hljs-comment">#发布项目，</span><br><span class="hljs-comment">#注：hexo d -g 生成以及部署</span><br></code></pre></td></tr></table></figure>
+
+<p>注： 到此为止，在网页输入github域名，chengaimi.github.io，如网页出现“未获得”，则再次使用命令npm install 再次安装组件和hexo clean 再次清理项目缓存</p>
+
+    </div>
+
+    <div class="article-footer">
+      
+    </div>
+
+    <div class="article-navs">
+      
+<nav class="card-container card-article-nav">
+  <div class="card-wrap">
+    
+      <div class="card-item img">
+        <article>
+          
+            <div class="card-cover" style="background-image: url(https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.5/img/banner/wallhaven4.png)"></div>
+          
+          <a class="card-link article-nav-link" href="/2019/07/08/hexo主题图片更换/"></a>
+          <div class="article-nav-caption">Newer</div>
+          <div class="article-nav-title">hexo主题图片更换</div>
+        </article>
+      </div>
+    
+    
+      <div class="card-item">
+        <article>
+          
+          <a class="card-link article-nav-link" href="/2019/07/03/wordpress-live2d/"></a>
+          <div class="article-nav-caption">Older</div>
+          <div class="article-nav-title">wordpress加入看板娘live2D</div>
+        </article>
+      </div>
+    
+  </div>
+</nav>
+
+    </div>
+    
+    
+  <div id="comment-container" class="comment-container"></div>
+
+  </article>
+</div></section>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    <p> <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.9/img/gif/kaowaiyi.gif" width="100" height="80"></p>
+
+<!--    
+      <p id="hitokoto"></p>
+      <script src="https://v1.hitokoto.cn/?c=a&amp;encode=js&select=%23hitokoto" defer></script>
+    
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank">flex-block</a></p> -->
+    
+
+<div style="text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("07/1/2019 00:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = " 宇宙将于第 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + "秒 毁灭";
+    }
+  setInterval("createtime()",250);
+</script>
+
+<div class="footer-device">
+    <p style="font-family: 'Ubuntu', sans-serif;">
+        
+        
+        </p><p>始于2019年7月1日
+      </p>
+    </div>
+  </div><!-- .site-info -->
+</div></footer>
+
+  </div>
+
+  
+
+  
+  <!-- 尾部其他内容 -->
+
+<!-- analytics -->
+
+
+
+
+
+
+
+  
+  
+
+<!-- dplayer 视频 -->
+<link rel="stylesheet" href="/lib/DPlayer.min.css">
+<script src="/lib/DPlayer.min.js"></script>
+<script type="text/javascript">
+  const dplayer = document.querySelectorAll(".dplayer");
+  dplayer && initDPlayer(dplayer);
+  function initDPlayer(els) {
+    let elsArr = Array.from(els);
+    elsArr.forEach(el => {
+      let url = el.dataset.url;
+      let cover = el.dataset.cover;
+      new DPlayer({
+        container: el,
+        video: { url: url, pic: cover },
+        theme: "#b7daff",
+        autoplay: false,
+        loop: false,
+        mutex: true,
+      });
+    });
+  }
+</script>
+
+
+<!-- 瀑布流 -->
+<script src="/lib/macy.js"></script>
+<script type="text/javascript">
+
+if (document.querySelector(".waterfall-container")) {
+  initCss()
+  initMacy(".waterfall-container")
+}
+
+function initMacy(selector) {
+  new Macy({
+    container: selector,
+    trueOrder: false,
+    waitForImages: false,
+    useOwnImageLoader: false,
+    mobileFirst: true,
+    columns: 1,
+    margin: {
+      y: 16,
+      x: '2%',
+    },
+    breakAt: {
+      1200: {
+        margin: {
+          x: 20
+        },
+        columns: 4
+      },
+      940: {
+        margin: {
+          x: 20
+        },
+        columns: 3
+      },
+      520: {
+        margin: {
+          x: 10
+        },
+        columns: 2
+      },
+      400: {
+        margin: {
+          x: 0
+        },
+        columns: 1
+      },
+    }
+  });
+}
+
+function initCss() {
+  let cssStyle = document.createElement("style")
+  cssStyle.innerText = `.waterfall-container p { display: block; border-radius: 4px; overflow: hidden; margin: 0; }`
+  document.head.appendChild(cssStyle);
+}
+</script>
+
+
+<!-- 图片预览 -->
+<script src="/lib/zoom.min.js"></script>
+<script>
+  document.querySelector(".zoom") && zoom(".zoom", {
+    margin: 15,
+    padding: 15,
+    radius: 5,
+    specify: "",
+    filter: "gallery",
+  });
+</script>
+
+
+<script src="/js/script.js"></script>
+</body>
+</html>

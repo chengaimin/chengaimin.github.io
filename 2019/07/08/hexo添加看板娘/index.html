@@ -17,7 +17,7 @@
 
   
 
-  <title>Hello World | yuluo</title>
+  <title>hexo添加看板娘live2D | yuluo</title>
 
   
 
@@ -90,14 +90,14 @@
 
     
     
-      <h1 class="header-title"><a href="/2019/07/19/hello-world/">Hello World</a></h1>
+      <h1 class="header-title"><a href="/2019/07/08/hexo添加看板娘/">hexo添加看板娘live2D</a></h1>
       <h2 class="header-subtitle">
         
-          
+          <a class="article-category-link" href="/categories/技术/">技术</a>
           <!--
           
   <a href="javascript:;" class="article-date">
-    <time datetime="2019-07-19T12:12:13.769Z" itemprop="datePublished">2019-07-19 08:12:13</time>
+    <time datetime="2019-07-08T06:25:08.000Z" itemprop="datePublished">2019-07-08 02:25:08</time>
   </a>
 
           -->
@@ -116,21 +116,29 @@
   <article id="article-content" class="main-container article-content zoom">
     
     
+    <div class="article-gallery">
+      
+<div class="article-gallery-photos">
+  
+    <a class="article-gallery-photos-img" href="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.5/img/banner/wallhaven5.png" target="_blank" rel="gallery-cjybt3quy0007hktpolol4ped">
+      <img src="https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.5/img/banner/wallhaven5.png" gallery itemprop="image">
+    </a>
+  
+</div>
+    </div>
+    
 
     <div class="article-entry">
-      <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span><br></code></pre></td></tr></table></figure>
+      <h3 id="看板娘加入过程"><a href="#看板娘加入过程" class="headerlink" title="看板娘加入过程"></a>看板娘加入过程</h3><p>1、将其他博主的看板娘压缩包解压放在themes/主题名字/source下，将文件夹名字改为“live2d-widget”。<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fstevenjoezhang%2Flive2d-widget" target="_blank" rel="nofollow">张书樵大神看板娘项目下载地址</a><br>2、修改themes/主题名字/source/live2d-widget/autoload.js文件（const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;;改为" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;;改为</a> ：const live2d_path = “/live2d-widget/“;）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#const live2d_path = "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/";</span><br>const live2d_path = <span class="hljs-string">"/live2d-widget/"</span>;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>3、在/themes/next/layout/_layout.swing(ejs)中,新增如下内容：<script src="/live2d-widget/autoload.js"></script></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">  &lt;/section&gt;<br>  &lt;%- partial(<span class="hljs-string">'_partial/mheader'</span>, null, &#123;cache: !config.relative_link&#125;) %&gt;<br>  &lt;%- partial(<span class="hljs-string">'_partial/aplayer'</span>, null, &#123;cache: !config.relative_link&#125;) %&gt;<br>  &lt;script src=<span class="hljs-string">"/live2d-widget/autoload.js"</span>&gt;&lt;/script&gt;<br>&lt;/body&gt;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>4、在 主题配置文件 中,新增如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">live2d:<br>  <span class="hljs-built_in">enable</span>: <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>5、想修改看板娘大小、位置、格式、文本内容等，可查看并修改 waifu-tips.js 、 waifu-tips.json 和 waifu.css。<br>参考：<br><a href="https://github.com/stevenjoezhang/live2d-widget" target="_blank" rel="noopener">https://github.com/stevenjoezhang/live2d-widget</a><br><a href="https://www.jianshu.com/p/89440678ee3c" target="_blank" rel="noopener">https://www.jianshu.com/p/89440678ee3c</a></p>
 
     </div>
 
@@ -143,13 +151,24 @@
 <nav class="card-container card-article-nav">
   <div class="card-wrap">
     
-    
       <div class="card-item">
         <article>
           
-          <a class="card-link article-nav-link" href="/2019/07/09/wordpress网站搭建/"></a>
+          <a class="card-link article-nav-link" href="/2019/07/08/hexo新建分类和标签/"></a>
+          <div class="article-nav-caption">Newer</div>
+          <div class="article-nav-title">hexo新建分类和标签</div>
+        </article>
+      </div>
+    
+    
+      <div class="card-item img">
+        <article>
+          
+            <div class="card-cover" style="background-image: url(https://cdn.jsdelivr.net/gh/chengaimi/cdn@1.5/img/banner/wallhaven4.png)"></div>
+          
+          <a class="card-link article-nav-link" href="/2019/07/08/hexo主题图片更换/"></a>
           <div class="article-nav-caption">Older</div>
-          <div class="article-nav-title">wordpress网站搭建</div>
+          <div class="article-nav-title">hexo主题图片更换</div>
         </article>
       </div>
     
@@ -159,8 +178,6 @@
     </div>
     
     
-  <div id="comment-container" class="comment-container"></div>
-
   </article>
 </div></section>
 
