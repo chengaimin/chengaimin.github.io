@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[wordpress网站搭建]]></title>
+    <url>%2F2019%2F07%2F09%2Fwordpress%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[准备工具1、服务器环境cent6.92、下载wordpress安装包3、FileZilla_3.42.1_win64-setup.exe #用于本地上传文件到服务器4、SecureCRT or putty #用于命令的配置 安装12yum install httpd php mysal-server php-mysql -y #安装Apache, PHP, MySQL以及php连接mysql组件 yum install mysql-server #yum安装数据库服务器 启动12/etc/init.d/httpd start #启动Apache/etc/init.d/mysqld start #启动数据库 数据库配置123456mysqlmysql&gt; grant all on 用户名.* to '用户名'@'localhost' identified by '密码'; #设置数据库密码mysql&gt; create database 数据库账户名; #创建数据库名字mysql&gt; flush privileges; #刷新权限mysql&gt; exit #退出mysql -u用户名 -p密码 #用此命令登录数据库，看数据库账号密码是否正确 wordpress配置1、wordpress安装包处理 12tar xf wordpress-4.9.4-zh_CN.tar.gz #在wordpress网站下载wordpress安装包上传到服务器的/tmp目录解压缩mv wordpress /var/www/html/ #将tmp目录下解压的wordpress移动到/var/www/html/路径下 2、wordpress文件处理 123456789101112cp wp-config-sample.php wp-config.php #在/var/www/html/wordpress/目录下，将wp-config-sample.php名字改为wp-config.phpvi wp-config.php #配置wp-config.php文件内数据库的用户密码，和创建数据库设置的用户密码一致.../** MySQL数据库用户名 */define('DB_USER', 'username_here');/** MySQL数据库密码 */define('DB_PASSWORD', 'password_here');define('DB_NAME', '数据库账户名');define('DB_USER', '数据库用户名');define('DB_PASSWORD', '数据库密码');... 3、直接用在网页输入 http://服务器IP地址/wordpress/ 进入打开网页，开始进行wordpress页面的设置，需要图片或者多个博客的，可以参考：https://blog.51cto.com/13858192/2169046需要Apache, PHP, MySQL命令解释的可以参考：3.1、https://www.cnblogs.com/qq917937712/p/8004555.html3.2、https://www.cnblogs.com/zfying/archive/2012/06/25/2560765.html3.3、https://www.jb51.net/article/95774.htm Apache和PHP的关系Apache只是一个服务程序，类似于ASP的IIS，它的功能是能获取用户的访问请求，并进行答复。PHP是解释器的作用。工作原理是，用户访问服务器，服务器上的APCHAE获得请求，然后根据用户访问的内容，寻找到网页文件，如果网页文件是需要编译的文件，比如PHP，就调用PHP的编译器（就是我们安装的PHP），编译解释完成之后就生成HTML的文件，APCHAE再将这个HTML文件返回给用户。]]></content>
+      <categories>
+        <category>wordpress</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo-flex主题新建网页的分类和标签]]></title>
+    <url>%2F2019%2F07%2F08%2Fhexo%E6%96%B0%E5%BB%BA%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%2F</url>
+    <content type="text"><![CDATA[新建分类和标签1、新建文件分类 1$ hexo new page categories #新建文件出现在/Documents/主题名字/source/categories/index.md下 2、打开index.md 123#文件出现以下默认内容title: categories #categories这是会显示在页面的分类名字，下面改为我命名为“生活”date: 2017-05-27 13:47:40 3、添加属性 123title: *生活date: 2017-05-27 13:47:40type: "categories" #加入这行代码，说明这个页面属性是分类页面 新建文章1、新建文章并设置文章分类 12$ hexo n 文章名字 #新建一篇文章，路径是/hexo/source/-posts/文章名字categories：分类名字“*生活” #修改此处是文章指向的分类页面名字 2、添加新建分类页面自定义内容 12345#在主题名字/languages/zh-cn.yml*生活: zh: 生活 en: live img: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/writing.jpg 3、添加分类进菜单栏 在主题名字/source/_config.yml下添加以下“生活: {path: /categories/*生活/, fa: fa-code faa-vertical },”内容，在首页顶部菜单栏就能出现想要的分类页面。此路径是自定义的分类页面路径（“生活”是文件内分类名字，必须添加，否则不行，不清楚为毛） 注：有加星号的四个生活四个必须是一致，否则会出现报错，“新建的文章”的1-3的生活是对应链接到“新建分类和标签”3的生活页面上的]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>set up</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo添加看板娘live2D]]></title>
+    <url>%2F2019%2F07%2F08%2Fhexo%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98%2F</url>
+    <content type="text"><![CDATA[看板娘加入过程1、将其他博主的看板娘压缩包解压放在themes/主题名字/source下，将文件夹名字改为“live2d-widget”。张书樵大神看板娘项目下载地址2、修改themes/主题名字/source/live2d-widget/autoload.js文件（const live2d_path = “https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;;改为 ：const live2d_path = “/live2d-widget/“;） 12#const live2d_path = "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/";const live2d_path = "/live2d-widget/"; 3、在/themes/next/layout/_layout.swing(ejs)中,新增如下内容： 12345 &lt;/section&gt; &lt;%- partial('_partial/mheader', null, &#123;cache: !config.relative_link&#125;) %&gt; &lt;%- partial('_partial/aplayer', null, &#123;cache: !config.relative_link&#125;) %&gt; &lt;script src="/live2d-widget/autoload.js"&gt;&lt;/script&gt;&lt;/body&gt; 4、在 主题配置文件 中,新增如下内容： 12live2d: enable: true 5、想修改看板娘大小、位置、格式、文本内容等，可查看并修改 waifu-tips.js 、 waifu-tips.json 和 waifu.css。参考：https://github.com/stevenjoezhang/live2d-widgethttps://www.jianshu.com/p/89440678ee3c]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo主题图片更换]]></title>
+    <url>%2F2019%2F07%2F08%2Fhexo%E4%B8%BB%E9%A2%98%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[更换操作过程1、在github创建CDN仓库，将从其他博主的cdn仓库文件下载下来解压。2、打开GitHub Desktop软件，登录github仓库，选择cdn仓库（选择本地新建cdn文件夹路径d/cdn/cdn），底部点击克隆cdn仓库（本地新建的cdn文件夹先不放文件，会报错）3、将其他博主的cdn仓库的文件放入d/cdn/cdn中4、在GitHub Desktop软件上将本地cdn仓库文件推送到github的cdn仓库上（左下角和右上角）5、在github的cdn仓库上找到要对应的文件路径，点击upload file，将文件拉入页面6、找到release发布文件，创建版本好，底部点击发布7、在config.yml文件内修改图片名称及版本号8、在命令行软件根目录下，执行清除、发布、本地网页测试（可以了就推送）]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>cdn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装hexo主题]]></title>
+    <url>%2F2019%2F07%2F06%2F%E5%AE%89%E8%A3%85hexo%E4%B8%BB%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[第一部分：github准备1、注册github账号,网址：https://github.com/ 2、创建仓库，仓库名字“XXXX.github.io” 3、找到_config.yml文件，repo值添加（在末尾） https://github.com/chengaimi/chengaimi.github.io.git 第二部分：安装hexo工具1234567$ npm install hexo -g #安装hexo$ hexo -v #检查版本看安装是否成功$ hexo init #初始化该文件夹$ npm install #安装所需要的组件$ hexo generate #首次体验Hexo$ hexo server #开启服务器，访问该网址，正式体验Hexo(hexo server -p 端口号”:可更改端口号)#浏览器输入 http://localhost:4000 看下效果吧！ 第三部分：初始化帐号密码123456789101112131415161718192021222324252627#在本地新建一个博客目录文件夹，初始化自己的git帐号和密码设置Git的user name和email（如果是第一次的话）$ cd /d/hexo #进入到所建博客目录文件下$ npm install hexo-deployer-git --save #部署项目，需要安装一个Hexo插件，具体原因未做了解$ git config --global user.name "chengaimi" #创建用户名$ git config --global user.email "530324300@qq.com" #配置邮箱 $ ssh-keygen -t rsa -C "530324300@qq.com" #续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub //默认存储路径是：C:\Users\Administrator\.sshGenerating public/private rsa key pair.Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa):Created directory '/c/Users/Administrator/.ssh'.Enter passphrase (empty for no passphrase):Enter same passphrase again:Your identification has been saved in /c/Users/Administrator/.ssh/id_rsa.Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.The key fingerprint is:SHA256:AGkeLzdiYwaqeKU2Q3KelPvy6miu18/p4/dGutXjSaM 530324300@qq.comThe key's randomart image is:+---[RSA 3072]----+| .. || . +. || . = o. ||o = X +. ||o* O = .S ||o X .. || o = o. = || oo o...o..+ + ||*+o+.+*o.+E o |+----[SHA256]-----+ 第四部分：添加密匙1234567891011121314#进到Users/Administrator/.ssh路径下$ eval "$(ssh-agent -s)" #添加密钥到ssh-agent$ ssh-add ~/.ssh/id_rsa #添加生成的SSH key到ssh-agent# 登录Github，点击头像下的settings，添加ssh，新建一个new ssh key，将id_rsa.pub文件里的内容复制上去$ ssh -T git@github.com #测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了The authenticity of host 'github.com (51.74.224.119)' can't be established.RSA key fingerprint is SHA256:nThbg6kXUcJWGlfE1IGOCxpRomTxdCARLviKw6E5SY8.Are you sure you want to continue connecting (yes/no/[fingerprint])? yes（生成known hosts文件）Warning: Permanently added 'github.com,51.74.224.119' (RSA) to the list of known hosts.Hi chengaimi! You've successfully authenticated, but GitHub does not provide shell access.$ hexo clean #清理项目$ hexo g #生成项目 $ hexo d #发布项目，#注：hexo d -g 生成以及部署 注： 到此为止，在网页输入github域名，chengaimi.github.io，如网页出现“未获得”，则再次使用命令npm install 再次安装组件和hexo clean 再次清理项目缓存]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[wordpress加入看板娘live2D]]></title>
+    <url>%2F2019%2F07%2F03%2Fwordpress-live2d%2F</url>
+    <content type="text"><![CDATA[下载及存放1、将看板娘安装包live2d.zip下载到wordpress内。 解压文件12#解压live2d.zip包后得到三个文件：assets、demo.html、live2d，将3文件放进以下路经中。$ /wordpress/wp-content/themes/主题目录/ 修改waifu-tips.js1234567 loadlive2d('live2d', './live2d/get/?id='+modelId+'-'+modelTexturesId, console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加&gt;载完成')); url: './live2d/'+modelTexturesRandMode+'_textures/?id='+modelId+'-'+modelTexturesId, url: './live2d/'+modelTexturesRandMode+'/?id='+modelId,#修改主题目录内文件waifu-tips.js，把./live2d路径改成绝对路径，如：/wp-content/themes/主题目录/assets/live2d 修改demo.html1234&lt;script type="text/javascript" src="./assets/jquery.min.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="./assets/waifu-tips.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="./assets/live2d.js"&gt;&lt;/script&gt;#修改主题目录内文件demo.html，把./assets路径改成绝对路径，如：/wp-content/themes/主题目录/assets footer.php插入代码1234567891011121314151617181920#将主题目录下文件demo.html部分代码复制到主题目录下的footer.php文件底部&lt;/body&gt;内。vim footer.php &lt;div class="waifu"&gt;&lt;div class="waifu-tips"&gt;&lt;/div&gt;&lt;canvas id="live2d" width="280" height="250" class="live2d"&gt;&lt;/canvas&gt;&lt;div class="waifu-tool"&gt; &lt;!span class="fui-home"&gt;&lt;/span&gt; //!是注释 不启用该行代码 &lt;span class="fui-chat"&gt;&lt;/span&gt; &lt;!span class="fui-eye"&gt;&lt;/span&gt; &lt;span class="fui-user"&gt;&lt;/span&gt; &lt;!span class="fui-photo"&gt;&lt;/span&gt; &lt;!span class="fui-info-circle"&gt;&lt;/span&gt; &lt;!span class="fui-cross"&gt;&lt;/span&gt; &lt;/div&gt;&lt;/div&gt;&lt;script type="text/javascript" src="/wp-content/themes/主题目录/assets/waifu-tips.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="/wp-content/themes/主题目录/assets/live2d.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="/wp-content/themes/主题目录/assets/jquery.min.js"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;initModel("/wp-content/themes/主题目录/assets/")&lt;/script&gt;&#123;1&#125; header.php插入代码1234567#将主题目录下文件demo.html部分代码复制到主题目录下的header.php文件开头的&lt;head&gt;内。vim header.php&lt;head&gt; &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt; &lt;link rel="stylesheet" type="text/css" href="/wp-content/themes/主题目录/assets/waifu.css"&gt; &lt;script src="/wp-content/themes/主题目录/assets/jquery.min.js"&gt;&lt;/script&gt;&lt;/head&gt;]]></content>
+      <categories>
+        <category>wordpress</category>
+      </categories>
+      <tags>
+        <tag>tool</tag>
+      </tags>
+  </entry>
+</search>
