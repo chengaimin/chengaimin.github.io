@@ -1,157 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>wordpress网站搭建</title>
-      <link href="/2019/07/09/wordpress%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
-      <url>/2019/07/09/wordpress%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</url>
-      
-        <content type="html"><![CDATA[<h3 id="准备工具"><a href="#准备工具" class="headerlink" title="准备工具"></a>准备工具</h3><p>1、服务器环境cent6.9<br>2、下载wordpress安装包<br>3、FileZilla_3.42.1_win64-setup.exe  #用于本地上传文件到服务器<br>4、SecureCRT or putty #用于命令的配置</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install httpd php mysal-server php-mysql -y  <span class="hljs-comment">#安装Apache, PHP, MySQL以及php连接mysql组件                           </span><br>yum install mysql-server  <span class="hljs-comment">#yum安装数据库服务器</span><br></code></pre></td></tr></table></figure><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">/etc/init.d/httpd start   <span class="hljs-comment">#启动Apache</span><br>/etc/init.d/mysqld start  <span class="hljs-comment">#启动数据库</span><br></code></pre></td></tr></table></figure><h3 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql<br>mysql&gt; grant all on 用户名.* to <span class="hljs-string">'用户名'</span>@<span class="hljs-string">'localhost'</span> identified by <span class="hljs-string">'密码'</span>;   <span class="hljs-comment">#设置数据库密码</span><br>mysql&gt; create database 数据库账户名;   <span class="hljs-comment">#创建数据库名字</span><br>mysql&gt; flush privileges;   <span class="hljs-comment">#刷新权限</span><br>mysql&gt; <span class="hljs-built_in">exit</span>  <span class="hljs-comment">#退出</span><br>mysql -u用户名 -p密码   <span class="hljs-comment">#用此命令登录数据库，看数据库账号密码是否正确</span><br></code></pre></td></tr></table></figure><h3 id="wordpress配置"><a href="#wordpress配置" class="headerlink" title="wordpress配置"></a>wordpress配置</h3><p>1、wordpress安装包处理</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar xf wordpress-4.9.4-zh_CN.tar.gz <span class="hljs-comment">#在wordpress网站下载wordpress安装包上传到服务器的/tmp目录解压缩</span><br>mv wordpress /var/www/html/   <span class="hljs-comment">#将tmp目录下解压的wordpress移动到/var/www/html/路径下</span><br></code></pre></td></tr></table></figure><p>2、wordpress文件处理</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">cp wp-config-sample.php wp-config.php <span class="hljs-comment">#在/var/www/html/wordpress/目录下，将wp-config-sample.php名字改为wp-config.php</span><br>vi wp-config.php <span class="hljs-comment">#配置wp-config.php文件内数据库的用户密码，和创建数据库设置的用户密码一致</span><br>...<br>/** MySQL数据库用户名 */<br>define(<span class="hljs-string">'DB_USER'</span>, <span class="hljs-string">'username_here'</span>);<br><br>/** MySQL数据库密码 */<br>define(<span class="hljs-string">'DB_PASSWORD'</span>, <span class="hljs-string">'password_here'</span>);<br>define(<span class="hljs-string">'DB_NAME'</span>, <span class="hljs-string">'数据库账户名'</span>);<br>define(<span class="hljs-string">'DB_USER'</span>, <span class="hljs-string">'数据库用户名'</span>);<br>define(<span class="hljs-string">'DB_PASSWORD'</span>, <span class="hljs-string">'数据库密码'</span>);<br>...<br></code></pre></td></tr></table></figure><p>3、直接用在网页输入 http://服务器IP地址/wordpress/ 进入打开网页，开始进行wordpress页面的设置，需要图片或者多个博客的，<br>可以参考：<a href="https://blog.51cto.com/13858192/2169046" target="_blank" rel="noopener">https://blog.51cto.com/13858192/2169046</a><br>需要Apache, PHP, MySQL命令解释的可以参考：<br>3.1、<a href="https://www.cnblogs.com/qq917937712/p/8004555.html" target="_blank" rel="noopener">https://www.cnblogs.com/qq917937712/p/8004555.html</a><br>3.2、<a href="https://www.cnblogs.com/zfying/archive/2012/06/25/2560765.html" target="_blank" rel="noopener">https://www.cnblogs.com/zfying/archive/2012/06/25/2560765.html</a><br>3.3、<a href="https://www.jb51.net/article/95774.htm" target="_blank" rel="noopener">https://www.jb51.net/article/95774.htm</a></p><h3 id="Apache和PHP的关系"><a href="#Apache和PHP的关系" class="headerlink" title="Apache和PHP的关系"></a>Apache和PHP的关系</h3><p>Apache只是一个服务程序，类似于ASP的IIS，它的功能是能获取用户的访问请求，并进行答复。<br>PHP是解释器的作用。<br>工作原理是，用户访问服务器，服务器上的APCHAE获得请求，然后根据用户访问的内容，寻找到网页文件，如果网页文件是需要编译的文件，比如PHP，就调用PHP的编译器（就是我们安装的PHP），编译解释完成之后就生成HTML的文件，APCHAE再将这个HTML文件返回给用户。</p>]]></content>
-      
-      
+<search>
+  <entry>
+    <title><![CDATA[wordpress网站搭建]]></title>
+    <url>%2F2019%2F07%2F09%2Fwordpress%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA%2F</url>
+    <content type="text"><![CDATA[准备工具1、服务器环境cent6.92、下载wordpress安装包3、FileZilla_3.42.1_win64-setup.exe #用于本地上传文件到服务器4、SecureCRT or putty #用于命令的配置 安装12yum install httpd php mysal-server php-mysql -y #安装Apache, PHP, MySQL以及php连接mysql组件 yum install mysql-server #yum安装数据库服务器 启动12/etc/init.d/httpd start #启动Apache/etc/init.d/mysqld start #启动数据库 数据库配置123456mysqlmysql&gt; grant all on 用户名.* to '用户名'@'localhost' identified by '密码'; #设置数据库密码mysql&gt; create database 数据库账户名; #创建数据库名字mysql&gt; flush privileges; #刷新权限mysql&gt; exit #退出mysql -u用户名 -p密码 #用此命令登录数据库，看数据库账号密码是否正确 wordpress配置1、wordpress安装包处理 12tar xf wordpress-4.9.4-zh_CN.tar.gz #在wordpress网站下载wordpress安装包上传到服务器的/tmp目录解压缩mv wordpress /var/www/html/ #将tmp目录下解压的wordpress移动到/var/www/html/路径下 2、wordpress文件处理 123456789101112cp wp-config-sample.php wp-config.php #在/var/www/html/wordpress/目录下，将wp-config-sample.php名字改为wp-config.phpvi wp-config.php #配置wp-config.php文件内数据库的用户密码，和创建数据库设置的用户密码一致.../** MySQL数据库用户名 */define('DB_USER', 'username_here');/** MySQL数据库密码 */define('DB_PASSWORD', 'password_here');define('DB_NAME', '数据库账户名');define('DB_USER', '数据库用户名');define('DB_PASSWORD', '数据库密码');... 3、直接用在网页输入 http://服务器IP地址/wordpress/ 进入打开网页，开始进行wordpress页面的设置，需要图片或者多个博客的，可以参考：https://blog.51cto.com/13858192/2169046需要Apache, PHP, MySQL命令解释的可以参考：3.1、https://www.cnblogs.com/qq917937712/p/8004555.html3.2、https://www.cnblogs.com/zfying/archive/2012/06/25/2560765.html3.3、https://www.jb51.net/article/95774.htm Apache和PHP的关系Apache只是一个服务程序，类似于ASP的IIS，它的功能是能获取用户的访问请求，并进行答复。PHP是解释器的作用。工作原理是，用户访问服务器，服务器上的APCHAE获得请求，然后根据用户访问的内容，寻找到网页文件，如果网页文件是需要编译的文件，比如PHP，就调用PHP的编译器（就是我们安装的PHP），编译解释完成之后就生成HTML的文件，APCHAE再将这个HTML文件返回给用户。]]></content>
       <categories>
-          
-          <category> wordpress </category>
-          
+        <category>wordpress</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> blog </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo-flex主题新建网页的分类和标签</title>
-      <link href="/2019/07/08/hexo%E6%96%B0%E5%BB%BA%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/"/>
-      <url>/2019/07/08/hexo%E6%96%B0%E5%BB%BA%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE/</url>
-      
-        <content type="html"><![CDATA[<h3 id="新建分类和标签"><a href="#新建分类和标签" class="headerlink" title="新建分类和标签"></a>新建分类和标签</h3><p>1、新建文件分类</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new page categories   <span class="hljs-comment">#新建文件出现在/Documents/主题名字/source/categories/index.md下</span><br></code></pre></td></tr></table></figure><p>2、打开index.md</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#文件出现以下默认内容</span><br>title: categories <span class="hljs-comment">#categories这是会显示在页面的分类名字，下面改为我命名为“生活”</span><br>date: 2017-05-27 13:47:40<br></code></pre></td></tr></table></figure><p>3、添加属性</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">title: *生活<br>date: 2017-05-27 13:47:40<br><span class="hljs-built_in">type</span>: <span class="hljs-string">"categories"</span>   <span class="hljs-comment">#加入这行代码，说明这个页面属性是分类页面</span><br></code></pre></td></tr></table></figure><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><p>1、新建文章并设置文章分类</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo n 文章名字  <span class="hljs-comment">#新建一篇文章，路径是/hexo/source/-posts/文章名字</span><br>categories：分类名字“*生活” <span class="hljs-comment">#修改此处是文章指向的分类页面名字</span><br></code></pre></td></tr></table></figure><p>2、添加新建分类页面自定义内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#在主题名字/languages/zh-cn.yml</span><br>*生活:<br>    zh: 生活   <br>    en: live<br>    img: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/writing.jpg<br></code></pre></td></tr></table></figure><p>3、添加分类进菜单栏</p><p> 在主题名字/source/_config.yml下添加以下“生活: {path: /categories/*生活/, fa: fa-code faa-vertical },”内容，在首页顶部菜单栏就能出现想要的分类页面。此路径是自定义的分类页面路径（“生活”是文件内分类名字，必须添加，否则不行，不清楚为毛）</p><p> 注：有加星号的四个生活四个必须是一致，否则会出现报错，“新建的文章”的1-3的生活是对应链接到“新建分类和标签”3的生活页面上的</p>]]></content>
-      
-      
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo-flex主题新建网页的分类和标签]]></title>
+    <url>%2F2019%2F07%2F08%2Fhexo%E6%96%B0%E5%BB%BA%E5%88%86%E7%B1%BB%E5%92%8C%E6%A0%87%E7%AD%BE%2F</url>
+    <content type="text"><![CDATA[新建分类和标签1、新建文件分类 1$ hexo new page categories #新建文件出现在/Documents/主题名字/source/categories/index.md下 2、打开index.md 123#文件出现以下默认内容title: categories #categories这是会显示在页面的分类名字，下面改为我命名为“生活”date: 2017-05-27 13:47:40 3、添加属性 123title: *生活date: 2017-05-27 13:47:40type: "categories" #加入这行代码，说明这个页面属性是分类页面 新建文章1、新建文章并设置文章分类 12$ hexo n 文章名字 #新建一篇文章，路径是/hexo/source/-posts/文章名字categories：分类名字“*生活” #修改此处是文章指向的分类页面名字 2、添加新建分类页面自定义内容 12345#在主题名字/languages/zh-cn.yml*生活: zh: 生活 en: live img: https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/banner/writing.jpg 3、添加分类进菜单栏 在主题名字/source/_config.yml下添加以下“生活: {path: /categories/*生活/, fa: fa-code faa-vertical },”内容，在首页顶部菜单栏就能出现想要的分类页面。此路径是自定义的分类页面路径（“生活”是文件内分类名字，必须添加，否则不行，不清楚为毛） 注：有加星号的四个生活四个必须是一致，否则会出现报错，“新建的文章”的1-3的生活是对应链接到“新建分类和标签”3的生活页面上的]]></content>
       <categories>
-          
-          <category> hexo </category>
-          
+        <category>hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> set up </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo添加看板娘live2D</title>
-      <link href="/2019/07/08/hexo%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98/"/>
-      <url>/2019/07/08/hexo%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98/</url>
-      
-        <content type="html"><![CDATA[<h3 id="看板娘加入过程"><a href="#看板娘加入过程" class="headerlink" title="看板娘加入过程"></a>看板娘加入过程</h3><p>1、将其他博主的看板娘压缩包解压放在themes/主题名字/source下，将文件夹名字改为“live2d-widget”。<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fstevenjoezhang%2Flive2d-widget" target="_blank" rel="nofollow">张书樵大神看板娘项目下载地址</a><br>2、修改themes/主题名字/source/live2d-widget/autoload.js文件（const live2d_path = “<a href="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;;改为" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;;改为</a> ：const live2d_path = “/live2d-widget/“;）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#const live2d_path = "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/";</span><br>const live2d_path = <span class="hljs-string">"/live2d-widget/"</span>;<br></code></pre></td></tr></table></figure><p>3、在/themes/next/layout/_layout.swing(ejs)中,新增如下内容：<script src="/live2d-widget/autoload.js"></script></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">  &lt;/section&gt;<br>  &lt;%- partial(<span class="hljs-string">'_partial/mheader'</span>, null, &#123;cache: !config.relative_link&#125;) %&gt;<br>  &lt;%- partial(<span class="hljs-string">'_partial/aplayer'</span>, null, &#123;cache: !config.relative_link&#125;) %&gt;<br>  &lt;script src=<span class="hljs-string">"/live2d-widget/autoload.js"</span>&gt;&lt;/script&gt;<br>&lt;/body&gt;<br></code></pre></td></tr></table></figure><p>4、在 主题配置文件 中,新增如下内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">live2d:<br>  <span class="hljs-built_in">enable</span>: <span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure><p>5、想修改看板娘大小、位置、格式、文本内容等，可查看并修改 waifu-tips.js 、 waifu-tips.json 和 waifu.css。<br>参考：<br><a href="https://github.com/stevenjoezhang/live2d-widget" target="_blank" rel="noopener">https://github.com/stevenjoezhang/live2d-widget</a><br><a href="https://www.jianshu.com/p/89440678ee3c" target="_blank" rel="noopener">https://www.jianshu.com/p/89440678ee3c</a></p>]]></content>
-      
-      
+      <tags>
+        <tag>set up</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo添加看板娘live2D]]></title>
+    <url>%2F2019%2F07%2F08%2Fhexo%E6%B7%BB%E5%8A%A0%E7%9C%8B%E6%9D%BF%E5%A8%98%2F</url>
+    <content type="text"><![CDATA[看板娘加入过程1、将其他博主的看板娘压缩包解压放在themes/主题名字/source下，将文件夹名字改为“live2d-widget”。张书樵大神看板娘项目下载地址2、修改themes/主题名字/source/live2d-widget/autoload.js文件（const live2d_path = “https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/&quot;;改为 ：const live2d_path = “/live2d-widget/“;） 12#const live2d_path = "https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/";const live2d_path = "/live2d-widget/"; 3、在/themes/next/layout/_layout.swing(ejs)中,新增如下内容： 12345 &lt;/section&gt; &lt;%- partial('_partial/mheader', null, &#123;cache: !config.relative_link&#125;) %&gt; &lt;%- partial('_partial/aplayer', null, &#123;cache: !config.relative_link&#125;) %&gt; &lt;script src="/live2d-widget/autoload.js"&gt;&lt;/script&gt;&lt;/body&gt; 4、在 主题配置文件 中,新增如下内容： 12live2d: enable: true 5、想修改看板娘大小、位置、格式、文本内容等，可查看并修改 waifu-tips.js 、 waifu-tips.json 和 waifu.css。参考：https://github.com/stevenjoezhang/live2d-widgethttps://www.jianshu.com/p/89440678ee3c]]></content>
       <categories>
-          
-          <category> hexo </category>
-          
+        <category>hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> tool </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>hexo主题图片更换</title>
-      <link href="/2019/07/08/hexo%E4%B8%BB%E9%A2%98%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2/"/>
-      <url>/2019/07/08/hexo%E4%B8%BB%E9%A2%98%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2/</url>
-      
-        <content type="html"><![CDATA[<h3 id="更换操作过程"><a href="#更换操作过程" class="headerlink" title="更换操作过程"></a>更换操作过程</h3><p>1、在github创建CDN仓库，将从其他博主的cdn仓库文件下载下来解压。<br>2、打开GitHub Desktop软件，登录github仓库，选择cdn仓库（选择本地新建cdn文件夹路径d/cdn/cdn），底部点击克隆cdn仓库（本地新建的cdn文件夹先不放文件，会报错）<br>3、将其他博主的cdn仓库的文件放入d/cdn/cdn中<br>4、在GitHub Desktop软件上将本地cdn仓库文件推送到github的cdn仓库上（左下角和右上角）<br>5、在github的cdn仓库上找到要对应的文件路径，点击upload file，将文件拉入页面<br>6、找到release发布文件，创建版本好，底部点击发布<br>7、在config.yml文件内修改图片名称及版本号<br>8、在命令行软件根目录下，执行清除、发布、本地网页测试（可以了就推送）</p>]]></content>
-      
-      
+      <tags>
+        <tag>tool</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo主题图片更换]]></title>
+    <url>%2F2019%2F07%2F08%2Fhexo%E4%B8%BB%E9%A2%98%E5%9B%BE%E7%89%87%E6%9B%B4%E6%8D%A2%2F</url>
+    <content type="text"><![CDATA[更换操作过程1、在github创建CDN仓库，将从其他博主的cdn仓库文件下载下来解压。2、打开GitHub Desktop软件，登录github仓库，选择cdn仓库（选择本地新建cdn文件夹路径d/cdn/cdn），底部点击克隆cdn仓库（本地新建的cdn文件夹先不放文件，会报错）3、将其他博主的cdn仓库的文件放入d/cdn/cdn中4、在GitHub Desktop软件上将本地cdn仓库文件推送到github的cdn仓库上（左下角和右上角）5、在github的cdn仓库上找到要对应的文件路径，点击upload file，将文件拉入页面6、找到release发布文件，创建版本好，底部点击发布7、在config.yml文件内修改图片名称及版本号8、在命令行软件根目录下，执行清除、发布、本地网页测试（可以了就推送）]]></content>
       <categories>
-          
-          <category> hexo </category>
-          
+        <category>hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> cdn </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>安装hexo主题</title>
-      <link href="/2019/07/06/%E5%AE%89%E8%A3%85hexo%E4%B8%BB%E9%A2%98/"/>
-      <url>/2019/07/06/%E5%AE%89%E8%A3%85hexo%E4%B8%BB%E9%A2%98/</url>
-      
-        <content type="html"><![CDATA[<h3 id="第一部分：github准备"><a href="#第一部分：github准备" class="headerlink" title="第一部分：github准备"></a>第一部分：github准备</h3><p>1、注册github账号,网址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p><p>2、创建仓库，仓库名字“XXXX.github.io”</p><p>3、找到_config.yml文件，repo值添加（在末尾） <a href="https://github.com/chengaimi/chengaimi.github.io.git" target="_blank" rel="noopener">https://github.com/chengaimi/chengaimi.github.io.git</a></p><h3 id="第二部分：安装hexo工具"><a href="#第二部分：安装hexo工具" class="headerlink" title="第二部分：安装hexo工具"></a>第二部分：安装hexo工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ npm install hexo -g <span class="hljs-comment">#安装hexo</span><br>$ hexo -v   <span class="hljs-comment">#检查版本看安装是否成功</span><br>$ hexo init  <span class="hljs-comment">#初始化该文件夹</span><br>$ npm install  <span class="hljs-comment">#安装所需要的组件</span><br>$ hexo generate  <span class="hljs-comment">#首次体验Hexo</span><br>$ hexo server <span class="hljs-comment">#开启服务器，访问该网址，正式体验Hexo(hexo server -p 端口号”:可更改端口号)</span><br><span class="hljs-comment">#浏览器输入 http://localhost:4000 看下效果吧！</span><br></code></pre></td></tr></table></figure><h3 id="第三部分：初始化帐号密码"><a href="#第三部分：初始化帐号密码" class="headerlink" title="第三部分：初始化帐号密码"></a>第三部分：初始化帐号密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#在本地新建一个博客目录文件夹，初始化自己的git帐号和密码设置Git的user name和email（如果是第一次的话）</span><br>$ <span class="hljs-built_in">cd</span> /d/hexo    <span class="hljs-comment">#进入到所建博客目录文件下</span><br>$ npm install hexo-deployer-git --save <span class="hljs-comment">#部署项目，需要安装一个Hexo插件，具体原因未做了解</span><br>$ git config --global user.name <span class="hljs-string">"chengaimi"</span>  <span class="hljs-comment">#创建用户名</span><br>$ git config --global user.email <span class="hljs-string">"530324300@qq.com"</span>   <span class="hljs-comment">#配置邮箱 </span><br>$ ssh-keygen -t rsa -C <span class="hljs-string">"530324300@qq.com"</span>  <span class="hljs-comment">#续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub  //默认存储路径是：C:\Users\Administrator\.ssh</span><br>Generating public/private rsa key pair.<br>Enter file <span class="hljs-keyword">in</span> <span class="hljs-built_in">which</span> to save the key (/c/Users/Administrator/.ssh/id_rsa):<br>Created directory <span class="hljs-string">'/c/Users/Administrator/.ssh'</span>.<br>Enter passphrase (empty <span class="hljs-keyword">for</span> no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved <span class="hljs-keyword">in</span> /c/Users/Administrator/.ssh/id_rsa.<br>Your public key has been saved <span class="hljs-keyword">in</span> /c/Users/Administrator/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>SHA256:AGkeLzdiYwaqeKU2Q3KelPvy6miu18/p4/dGutXjSaM 530324300@qq.com<br>The key<span class="hljs-string">'s randomart image is:<br>+---[RSA 3072]----+<br>|    ..           |<br>|  . +.           |<br>| . = o.          |<br>|o = X +.         |<br>|o* O = .S        |<br>|o X       ..     |<br>| o =     o. =    |<br>| oo o...o..+ +   |<br>|*+o+.+*o.+E o    |<br>+----[SHA256]-----+</span><br></code></pre></td></tr></table></figure><h3 id="第四部分：添加密匙"><a href="#第四部分：添加密匙" class="headerlink" title="第四部分：添加密匙"></a>第四部分：添加密匙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#进到Users/Administrator/.ssh路径下</span><br>$ <span class="hljs-built_in">eval</span> <span class="hljs-string">"<span class="hljs-variable">$(ssh-agent -s)</span>"</span>   <span class="hljs-comment">#添加密钥到ssh-agent</span><br>$ ssh-add ~/.ssh/id_rsa  <span class="hljs-comment">#添加生成的SSH key到ssh-agent</span><br><span class="hljs-comment"># 登录Github，点击头像下的settings，添加ssh，新建一个new ssh key，将id_rsa.pub文件里的内容复制上去</span><br>$ ssh -T git@github.com <span class="hljs-comment">#测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了</span><br>The authenticity of host <span class="hljs-string">'github.com (51.74.224.119)'</span> can<span class="hljs-string">'t be established.<br>RSA key fingerprint is SHA256:nThbg6kXUcJWGlfE1IGOCxpRomTxdCARLviKw6E5SY8.<br>Are you sure you want to continue connecting (yes/no/[fingerprint])? yes（生成known hosts文件）<br>Warning: Permanently added '</span>github.com,51.74.224.119<span class="hljs-string">' (RSA) to the list of known hosts.<br>Hi chengaimi! You'</span>ve successfully authenticated, but GitHub does not provide shell access.<br>$ hexo clean <span class="hljs-comment">#清理项目</span><br>$ hexo g <span class="hljs-comment">#生成项目 </span><br>$ hexo d <span class="hljs-comment">#发布项目，</span><br><span class="hljs-comment">#注：hexo d -g 生成以及部署</span><br></code></pre></td></tr></table></figure><p>注： 到此为止，在网页输入github域名，chengaimi.github.io，如网页出现“未获得”，则再次使用命令npm install 再次安装组件和hexo clean 再次清理项目缓存</p>]]></content>
-      
-      
+      <tags>
+        <tag>cdn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[安装hexo主题]]></title>
+    <url>%2F2019%2F07%2F06%2F%E5%AE%89%E8%A3%85hexo%E4%B8%BB%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[第一部分：github准备1、注册github账号,网址：https://github.com/ 2、创建仓库，仓库名字“XXXX.github.io” 3、找到_config.yml文件，repo值添加（在末尾） https://github.com/chengaimi/chengaimi.github.io.git 第二部分：安装hexo工具1234567$ npm install hexo -g #安装hexo$ hexo -v #检查版本看安装是否成功$ hexo init #初始化该文件夹$ npm install #安装所需要的组件$ hexo generate #首次体验Hexo$ hexo server #开启服务器，访问该网址，正式体验Hexo(hexo server -p 端口号”:可更改端口号)#浏览器输入 http://localhost:4000 看下效果吧！ 第三部分：初始化帐号密码123456789101112131415161718192021222324252627#在本地新建一个博客目录文件夹，初始化自己的git帐号和密码设置Git的user name和email（如果是第一次的话）$ cd /d/hexo #进入到所建博客目录文件下$ npm install hexo-deployer-git --save #部署项目，需要安装一个Hexo插件，具体原因未做了解$ git config --global user.name "chengaimi" #创建用户名$ git config --global user.email "530324300@qq.com" #配置邮箱 $ ssh-keygen -t rsa -C "530324300@qq.com" #续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub //默认存储路径是：C:\Users\Administrator\.sshGenerating public/private rsa key pair.Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa):Created directory '/c/Users/Administrator/.ssh'.Enter passphrase (empty for no passphrase):Enter same passphrase again:Your identification has been saved in /c/Users/Administrator/.ssh/id_rsa.Your public key has been saved in /c/Users/Administrator/.ssh/id_rsa.pub.The key fingerprint is:SHA256:AGkeLzdiYwaqeKU2Q3KelPvy6miu18/p4/dGutXjSaM 530324300@qq.comThe key's randomart image is:+---[RSA 3072]----+| .. || . +. || . = o. ||o = X +. ||o* O = .S ||o X .. || o = o. = || oo o...o..+ + ||*+o+.+*o.+E o |+----[SHA256]-----+ 第四部分：添加密匙1234567891011121314#进到Users/Administrator/.ssh路径下$ eval "$(ssh-agent -s)" #添加密钥到ssh-agent$ ssh-add ~/.ssh/id_rsa #添加生成的SSH key到ssh-agent# 登录Github，点击头像下的settings，添加ssh，新建一个new ssh key，将id_rsa.pub文件里的内容复制上去$ ssh -T git@github.com #测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了The authenticity of host 'github.com (51.74.224.119)' can't be established.RSA key fingerprint is SHA256:nThbg6kXUcJWGlfE1IGOCxpRomTxdCARLviKw6E5SY8.Are you sure you want to continue connecting (yes/no/[fingerprint])? yes（生成known hosts文件）Warning: Permanently added 'github.com,51.74.224.119' (RSA) to the list of known hosts.Hi chengaimi! You've successfully authenticated, but GitHub does not provide shell access.$ hexo clean #清理项目$ hexo g #生成项目 $ hexo d #发布项目，#注：hexo d -g 生成以及部署 注： 到此为止，在网页输入github域名，chengaimi.github.io，如网页出现“未获得”，则再次使用命令npm install 再次安装组件和hexo clean 再次清理项目缓存]]></content>
       <categories>
-          
-          <category> hexo </category>
-          
+        <category>hexo</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> blog </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>wordpress加入看板娘live2D</title>
-      <link href="/2019/07/03/wordpress-live2d/"/>
-      <url>/2019/07/03/wordpress-live2d/</url>
-      
-        <content type="html"><![CDATA[<h3 id="下载及存放"><a href="#下载及存放" class="headerlink" title="下载及存放"></a>下载及存放</h3><p>1、将看板娘安装包live2d.zip下载到wordpress内。</p><h3 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#解压live2d.zip包后得到三个文件：assets、demo.html、live2d，将3文件放进以下路经中。</span><br>$ /wordpress/wp-content/themes/主题目录/<br></code></pre></td></tr></table></figure><h3 id="修改waifu-tips-js"><a href="#修改waifu-tips-js" class="headerlink" title="修改waifu-tips.js"></a>修改waifu-tips.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">      loadlive2d(<span class="hljs-string">'live2d'</span>, <span class="hljs-string">'./live2d/get/?id='</span>+modelId+<span class="hljs-string">'-'</span>+modelTextur<br>esId, console.log(<span class="hljs-string">'live2d'</span>,<span class="hljs-string">'模型 '</span>+modelId+<span class="hljs-string">'-'</span>+modelTexturesId+<span class="hljs-string">' 加&gt;<br>载完成'</span>));<br>      url: <span class="hljs-string">'./live2d/'</span>+modelTexturesRandMode+<span class="hljs-string">'_textures/?id='</span>+mode<br>lId+<span class="hljs-string">'-'</span>+modelTexturesId,<br>      url: <span class="hljs-string">'./live2d/'</span>+modelTexturesRandMode+<span class="hljs-string">'/?id='</span>+modelId,<br><span class="hljs-comment">#修改主题目录内文件waifu-tips.js，把./live2d路径改成绝对路径，如：/wp-content/themes/主题目录/assets/live2d</span><br></code></pre></td></tr></table></figure><h3 id="修改demo-html"><a href="#修改demo-html" class="headerlink" title="修改demo.html"></a>修改demo.html</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./assets/jquery.min.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./assets/waifu-tips.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"./assets/live2d.js"</span>&gt;&lt;/script&gt;<br><span class="hljs-comment">#修改主题目录内文件demo.html，把./assets路径改成绝对路径，如：/wp-content/themes/主题目录/assets</span><br></code></pre></td></tr></table></figure><h3 id="footer-php插入代码"><a href="#footer-php插入代码" class="headerlink" title="footer.php插入代码"></a>footer.php插入代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将主题目录下文件demo.html部分代码复制到主题目录下的footer.php文件底部&lt;/body&gt;内。</span><br>vim footer.php  <br>&lt;div class=<span class="hljs-string">"waifu"</span>&gt;<br>&lt;div class=<span class="hljs-string">"waifu-tips"</span>&gt;&lt;/div&gt;<br>&lt;canvas id=<span class="hljs-string">"live2d"</span> width=<span class="hljs-string">"280"</span> height=<span class="hljs-string">"250"</span> class=<span class="hljs-string">"live2d"</span>&gt;&lt;/canvas&gt;<br>&lt;div class=<span class="hljs-string">"waifu-tool"</span>&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-home"</span>&gt;&lt;/span&gt;  //!是注释 不启用该行代码<br>    &lt;span class=<span class="hljs-string">"fui-chat"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-eye"</span>&gt;&lt;/span&gt;<br>    &lt;span class=<span class="hljs-string">"fui-user"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-photo"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-info-circle"</span>&gt;&lt;/span&gt;<br>    &lt;!span class=<span class="hljs-string">"fui-cross"</span>&gt;&lt;/span&gt;<br>  &lt;/div&gt;<br>&lt;/div&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/waifu-tips.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/live2d.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span> src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/jquery.min.js"</span>&gt;&lt;/script&gt;<br>&lt;script <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;initModel(<span class="hljs-string">"/wp-content/themes/主题目录/assets/"</span>)&lt;/script&gt;<br>&#123;1&#125;<br></code></pre></td></tr></table></figure><h3 id="header-php插入代码"><a href="#header-php插入代码" class="headerlink" title="header.php插入代码"></a>header.php插入代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将主题目录下文件demo.html部分代码复制到主题目录下的header.php文件开头的&lt;head&gt;内。</span><br>vim header.php<br>&lt;head&gt;<br>    &lt;meta http-equiv=<span class="hljs-string">"Content-Type"</span> content=<span class="hljs-string">"text/html; charset=UTF-8"</span> /&gt;  <br>    &lt;link rel=<span class="hljs-string">"stylesheet"</span> <span class="hljs-built_in">type</span>=<span class="hljs-string">"text/css"</span> href=<span class="hljs-string">"/wp-content/themes/主题目录/assets/waifu.css"</span>&gt;<br>    &lt;script src=<span class="hljs-string">"/wp-content/themes/主题目录/assets/jquery.min.js"</span>&gt;&lt;/script&gt;<br>&lt;/head&gt;<br></code></pre></td></tr></table></figure>]]></content>
-      
-      
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[wordpress加入看板娘live2D]]></title>
+    <url>%2F2019%2F07%2F03%2Fwordpress-live2d%2F</url>
+    <content type="text"><![CDATA[下载及存放1、将看板娘安装包live2d.zip下载到wordpress内。 解压文件12#解压live2d.zip包后得到三个文件：assets、demo.html、live2d，将3文件放进以下路经中。$ /wordpress/wp-content/themes/主题目录/ 修改waifu-tips.js1234567 loadlive2d('live2d', './live2d/get/?id='+modelId+'-'+modelTexturesId, console.log('live2d','模型 '+modelId+'-'+modelTexturesId+' 加&gt;载完成')); url: './live2d/'+modelTexturesRandMode+'_textures/?id='+modelId+'-'+modelTexturesId, url: './live2d/'+modelTexturesRandMode+'/?id='+modelId,#修改主题目录内文件waifu-tips.js，把./live2d路径改成绝对路径，如：/wp-content/themes/主题目录/assets/live2d 修改demo.html1234&lt;script type="text/javascript" src="./assets/jquery.min.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="./assets/waifu-tips.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="./assets/live2d.js"&gt;&lt;/script&gt;#修改主题目录内文件demo.html，把./assets路径改成绝对路径，如：/wp-content/themes/主题目录/assets footer.php插入代码1234567891011121314151617181920#将主题目录下文件demo.html部分代码复制到主题目录下的footer.php文件底部&lt;/body&gt;内。vim footer.php &lt;div class="waifu"&gt;&lt;div class="waifu-tips"&gt;&lt;/div&gt;&lt;canvas id="live2d" width="280" height="250" class="live2d"&gt;&lt;/canvas&gt;&lt;div class="waifu-tool"&gt; &lt;!span class="fui-home"&gt;&lt;/span&gt; //!是注释 不启用该行代码 &lt;span class="fui-chat"&gt;&lt;/span&gt; &lt;!span class="fui-eye"&gt;&lt;/span&gt; &lt;span class="fui-user"&gt;&lt;/span&gt; &lt;!span class="fui-photo"&gt;&lt;/span&gt; &lt;!span class="fui-info-circle"&gt;&lt;/span&gt; &lt;!span class="fui-cross"&gt;&lt;/span&gt; &lt;/div&gt;&lt;/div&gt;&lt;script type="text/javascript" src="/wp-content/themes/主题目录/assets/waifu-tips.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="/wp-content/themes/主题目录/assets/live2d.js"&gt;&lt;/script&gt;&lt;script type="text/javascript" src="/wp-content/themes/主题目录/assets/jquery.min.js"&gt;&lt;/script&gt;&lt;script type="text/javascript"&gt;initModel("/wp-content/themes/主题目录/assets/")&lt;/script&gt;&#123;1&#125; header.php插入代码1234567#将主题目录下文件demo.html部分代码复制到主题目录下的header.php文件开头的&lt;head&gt;内。vim header.php&lt;head&gt; &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt; &lt;link rel="stylesheet" type="text/css" href="/wp-content/themes/主题目录/assets/waifu.css"&gt; &lt;script src="/wp-content/themes/主题目录/assets/jquery.min.js"&gt;&lt;/script&gt;&lt;/head&gt;]]></content>
       <categories>
-          
-          <category> wordpress </category>
-          
+        <category>wordpress</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> tool </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>tool</tag>
+      </tags>
+  </entry>
 </search>
